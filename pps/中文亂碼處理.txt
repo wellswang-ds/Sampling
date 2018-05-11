@@ -1,0 +1,5 @@
+如果中文顯示為亂碼 
+請點選Tools -> gobal options -> code -> Saving
+找到 Default text encoding:
+按下change
+選取UTF-8 點選OK即可
