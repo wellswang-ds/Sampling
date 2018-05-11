@@ -1,22 +1,18 @@
----
-title: "Sampling HW"
-output:
-  html_document: 
-    keep_md: TRUE
----
+
+# Sampling with 4 different kinds of method 
   
-  
-##1. Simple Random Sampling
+## 1. Simple Random Sampling
 
 ### Read data 
-```{r}
-setwd("~/Documents/FJU大四/抽樣調查/Mid HW")
-p_srs <- read.csv("products.csv",header = T) # population 
 
+```r
+setwd("~/Documents/FJU大四/Sampling/Mid_HW")
+p_srs <- read.csv("products.csv",header = T) # population 
 ```
 
 ### Function
-```{r}
+
+```r
 fun_srs <-function(n,data){
   
   # SRS ---------------------------------------------------------------------
@@ -31,26 +27,27 @@ fun_srs <-function(n,data){
   data.frame(data[SRS,])# match the row number 
   
 }
-
 ```
 
 
 ### Run Function
-```{r}
-s_srs<-fun_srs(n=1068,data=p_srs) #sample s
 
+```r
+s_srs<-fun_srs(n=1068,data=p_srs) #sample s
 ```
    
   
-##2. SRS with Ratio Estimation 
+## 2. SRS with Ratio Estimation 
 ### Read data
-```{r}
-setwd("~/Documents/FJU大四/抽樣調查/Mid HW")
+
+```r
+setwd("~/Documents/FJU大四/Sampling/Mid_HW")
 p_srs <- read.csv("products.csv",header = T)
 ```
 
 ### Function
-```{r}
+
+```r
 fun_srsn<-function(z=1.96,d,a,data){
     
   # Ratio Estimation-------------------------------------------
@@ -67,24 +64,29 @@ fun_srsn<-function(z=1.96,d,a,data){
 
 ### Run Function
 
-```{r}
-  fun_srsn(z= 1.96, d= 0.015, a= p_srs$WebActivity, data= p_srs) 
 
+```r
+  fun_srsn(z= 1.96, d= 0.015, a= p_srs$WebActivity, data= p_srs) 
+```
+
+```
+## [1] "樣本數= 3344"
 ```
   sample size n is determined   
   
 
-##3. Systematic Sampling  
+## 3. Systematic Sampling  
 ### Read data
-```{r}
-setwd("~/Documents/FJU大四/抽樣調查/Mid HW")
-p_sys <- read.csv("products.csv",header = T) #population 
 
+```r
+setwd("~/Documents/FJU大四/Sampling/Mid_HW")
+p_sys <- read.csv("products.csv",header = T) #population 
 ```
 
 
 ### Function 
-```{r}
+
+```r
 fun_sys<-function(n,data){
 
   # Systematic Sampling 
@@ -100,22 +102,23 @@ fun_sys<-function(n,data){
   
   data.frame(data[s,]) 
 }
-
 ```
 s = the row number which would be sampled  
 After the s is sampled, match the row number to the data frame  
 
 ### Run Function 
-```{r}
+
+```r
 s_sys<- fun_sys(n=2000,data=p_sys) #sample  
 ```
 
 
 
-##4. Repeated Systematic Sampling and Confidence Interval 
+## 4. Repeated Systematic Sampling and Confidence Interval 
 ### Read data
-```{r}
-setwd("~/Documents/FJU大四/抽樣調查/Mid HW")
+
+```r
+setwd("~/Documents/FJU大四/Sampling/Mid_HW")
 p_sys <- read.csv("products.csv",header = T)
 ```
 
@@ -131,7 +134,8 @@ gap = the gap in each repeated systematic sampling
 stp = the starting point of each 10 repeat systematic sampling  
 sam = an empty matrix to fill all 10 rsys sample rows   
 
-```{r}
+
+```r
 fun_rsys<-function(n,n_rsys,v,data){
   
   # Repeated Systematic Sampling 
@@ -161,13 +165,17 @@ fun_rsys<-function(n,n_rsys,v,data){
     
     s_rsys 
 }
-
 ```
 The last s_rsys in the code is to get the sample data outside the function
 
 ### Run function 
-```{r}
+
+```r
 s_rsys<- fun_rsys(n=3000,n_rsys=10,v='Age',data=p_sys)
+```
+
+```
+## [1] "95% CI= ( 26.2959617897657 , 70.1440382102343 )"
 ```
 sample data get!
 
