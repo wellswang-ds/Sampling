@@ -1,6 +1,15 @@
 
 # Sampling with 4 different kinds of method 
-  
+
+Here we demonstrate 4 different kinds of sampling method with the given data `product.csv`
+
+<details><summary>Table of Contents</summary><p>
+
+* [1. Simple Random Sampling](#1-simple-random-sampling)
+* [2. SRS with Ratio Estimation](#2-srs-with-ratio-estimation)
+* [3. Systematic Sampling](#3-systematic-sampling)
+* [4. Repeated Systematic Sampling and Confidence Interval](4-repeated-systematic-sampling-and-confidence-interval)
+
 ## 1. Simple Random Sampling
 
 ### Read data 
