@@ -1,11 +1,7 @@
----
-title: "Cluster Sampling"
-output:
-  html_document:
-       keep_md: TRUE
----
-#8.3 Estimation of a population mean and total
-###建立課本例題的資料####
+# Cluster Sampling 
+
+## 8.3 Estimation of a population mean and total
+### 建立課本例題的資料
 
 
 ```r
@@ -16,7 +12,7 @@ total_income_per_cluster_yi<-c(96000,121000,42000,65000,52000,40000,75000,65000,
                                45000,37000,51000,30000,39000,47000,41000)
 percapita_income<-data.frame(cluster,number_of_residents_mi,total_income_per_cluster_yi)
 ```
-###輸入例題中各變數的值####
+### 輸入例題中各變數的值
 
 ```r
 y<-percapita_income$total_income_per_cluster_yi #y = observations of target variable
@@ -24,7 +20,7 @@ m<-percapita_income$number_of_residents_mi # the  number of elements in cluster
 N<-415
 M<-2500
 ```
-###估計母體平均數及其變異數、誤差上下界####
+### 估計母體平均數及其變異數、誤差上下界
 
 ```r
 cluster.mu<-function(y=0,m=0,N=0){
@@ -38,7 +34,7 @@ cluster.mu<-function(y=0,m=0,N=0){
   cbind(mean,var,confi_interval)
 }
 ```
-####課本例題
+#### 課本例題
 
 ```r
 cluster.mu(y,m,N)
@@ -50,7 +46,7 @@ cluster.mu(y,m,N)
 ##      confi_interval                       
 ## [1,] "(7184.18481307135,10418.4641935512)"
 ```
-###估計母體總數及其變異數、誤差上下界####
+### 估計母體總數及其變異數、誤差上下界
 
 ```r
 cluster.total<-function(y=0,m=0,N=0,M=NA){
@@ -76,7 +72,7 @@ cluster.total<-function(y=0,m=0,N=0,M=NA){
   }
 }
 ```
-####課本例題
+#### 課本例題
 
 ```r
 cluster.total(y,m,N,M)
@@ -97,8 +93,9 @@ cluster.total(y,m,N,M=NA)
 ##      total      var             confi_interval                       
 ## [1,] "22061400" "3072279860000" "(18555815.9630669,25566984.0369331)"
 ```
-#8.5 Selecting the Sample Size for Estimating Population Means and Totals
-###估計具估計誤差B的mu的樣本大小####
+# 8.5 Selecting the Sample Size for Estimating Population Means and Totals
+
+### 估計具估計誤差B的mu的樣本大小
 
 ```r
 mu_n<-function(y,m,M_mean=mean(m),N,B=2*var_ybar^(1/2),var_ybar){
@@ -108,7 +105,7 @@ mu_n<-function(y,m,M_mean=mean(m),N,B=2*var_ybar^(1/2),var_ybar){
   n
 }
 ```
-####課本例題
+#### 課本例題
 
 ```r
 mu_n(y,m,M_mean=mean(m),N,500)
@@ -117,7 +114,7 @@ mu_n(y,m,M_mean=mean(m),N,500)
 ```
 ## [1] 166.5787
 ```
-###估計具估計誤差B的tau的樣本大小####
+### 估計具估計誤差B的tau的樣本大小
 
 ```r
 tau_n<-function(y,m,N,B=2*var_ybar^(1/2),var_ybar=0){
@@ -131,8 +128,8 @@ tau_n<-function(y,m,N,B=2*var_ybar^(1/2),var_ybar=0){
   n
 }
 ```
-####課本例題
-#####未知M，用M*ytbar
+#### 課本例題
+##### 未知M，用M*ytbar
 
 ```r
 B<-1000000
@@ -143,7 +140,7 @@ tau_n(y,m,N,B)
 ```
 ## [1] 182.8665
 ```
-#####已知M，用M*ybar
+##### 已知M，用M*ybar
 
 ```r
 B<-1000000
@@ -154,7 +151,7 @@ tau_n(y,m,N,B)
 ```
 ## [1] 212.8836
 ```
-#8.6 Estimation of a Population Proportion
+# 8.6 Estimation of a Population Proportion
 
 ```r
 a <-c(4,7,1,3,3,4,4,2,3,2,1,3,2,5,4,1,4,2,3,1,3,3,4,0,3)  #有興趣元素
@@ -175,7 +172,7 @@ eastimate_p(a,number_of_residents_mi,25)
 ##          p.hat         BB
 ## [1,] 0.4768212 0.04582662
 ```
-#8.7 Selecting the Sample Size for Estimating Proportions
+# 8.7 Selecting the Sample Size for Estimating Proportions
 
 ```r
 find_p <- function(a,m,n,B,N=415){  # a: 有興趣元素 m: 元素(居民) n:抽出幾群
@@ -193,8 +190,8 @@ find_p(a,number_of_residents_mi,25,0.04)
 ```
 ## [1] 33
 ```
-#8.8 Cluster Sampling Combined with Stratification
-####資料一
+# 8.8 Cluster Sampling Combined with Stratification
+#### 資料一
 
 ```r
 cluster<-c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25)
@@ -207,7 +204,7 @@ percapita_income1<-data.frame(cluster,number_of_residents_mi,total_income_per_cl
 y1<-percapita_income1$total_income_per_cluster_yi   #資料一y值
 m1<-percapita_income1$number_of_residents_mi        #資料一m值
 ```
-####資料二
+#### 資料二
 
 ```r
 cluster<-c(1,2,3,4,5,6,7,8,9,10)
@@ -218,19 +215,19 @@ percapita_income2<-data.frame(cluster,number_of_residents_mi,total_income_per_cl
 y2<-percapita_income2$total_income_per_cluster_yi   #資料二y值
 m2<-percapita_income2$number_of_residents_mi        #資料二m值
 ```
-####輸入由題目給定的各別母群體大小
+#### 輸入由題目給定的各別母群體大小
 
 ```r
 N1=415
 N2=168
 ```
-####計算個別母群體所抽樣的群體數
+#### 計算個別母群體所抽樣的群體數
 
 ```r
 n1=nrow(percapita_income1)
 n2=nrow(percapita_income2)
 ```
-####計算群體抽樣與分層結合後的平均數、變異數及95%信賴水準下的信賴區間
+#### 計算群體抽樣與分層結合後的平均數、變異數及95%信賴水準下的信賴區間
 
 ```r
 cluster_with_strata<-function(N1,N2,y1,y2,n1,n2,m1,m2){
@@ -250,7 +247,7 @@ cluster_with_strata<-function(N1,N2,y1,y2,n1,n2,m1,m2){
   cbind(ycbar,var,confi_interval)
 }
 ```
-####帶入課本例題
+#### 帶入課本例題
 
 ```r
 cluster_with_strata(N1,N2,y1,y2,n1,n2,m1,m2)
@@ -263,9 +260,9 @@ cluster_with_strata(N1,N2,y1,y2,n1,n2,m1,m2)
 ## [1,] "(8100.54867867706,10669.9480478531)"
 ```
 
-#8.9 Cluster Sampling with Probability Proportional to Size
-##Textbook Example 1 pg.275
-###Step 1
+# 8.9 Cluster Sampling with Probability Proportional to Size
+## Textbook Example 1 pg.275
+### Step 1
 
 ```r
 Division <- c(1,2,3,4,5,6,7,8)
@@ -274,7 +271,7 @@ number_of_employees<-c(1200,450,2100,860,2840,1910,390,3200)
 輸入資料  
 
 
-###Step 2
+### Step 2
 
 ```r
 Cumulative_range<-cumsum(number_of_employees)
@@ -285,11 +282,11 @@ pps <-Days_of_sick_leave$number_of_employees   #資料二y值
 計算出每個群的範圍用來作PPS抽樣,並給定稍後要丟入function內的變數
 
 
-##Textbook Example 2 p.276
+## Textbook Example 2 p.276
 
-####After investigating the clusters chosen by pps    
-####We can now start to estimate the population parameter
-###Step 3
+#### After investigating the clusters chosen by pps    
+#### We can now start to estimate the population parameter
+### Step 3
 
 ```r
 n=3
@@ -305,7 +302,7 @@ mi = c(m1,m2,m3)
 ```
 輸入抽出後做調查的n 個集群大小mi，與所調查出的觀察值yi
 
-###Step 4
+### Step 4
 
 ```r
 yibar = yi/mi
@@ -319,7 +316,7 @@ confi_interval={
 
 估計母體參數與信賴區間  
 
-##Results
+## Results
  
 
 Table: Estimation of population mean, variance, and confidence interval 
