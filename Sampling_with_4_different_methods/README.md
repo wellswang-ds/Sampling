@@ -1,10 +1,12 @@
 
-# Sampling with 4 different kinds of method 
+
+# Sampling with 4 different kinds of method
 
 Here we demonstrate 4 different kinds of sampling method with the given data `product.csv`
 
 <details><summary>Table of Contents</summary><p>
 
+* [0. Data](#0-data)
 * [1. Simple Random Sampling](#1-simple-random-sampling)
 * [2. SRS with Ratio Estimation](#2-srs-with-ratio-estimation)
 * [3. Systematic Sampling](#3-systematic-sampling)
@@ -12,13 +14,47 @@ Here we demonstrate 4 different kinds of sampling method with the given data `pr
 
 </p></details><p></p>
 
+## 0. Data
+
+```r
+library(data.table)
+product <- fread('https://raw.githubusercontent.com/wellsytheman/Sampling/master/Sampling_with_4_different_methods/products.csv')
+library(knitr)
+kable(product[1:20,], format = 'markdown')
+```
+
+
+
+|row ID                      |MaritalStatus |Gender | EstimatedYearlyIncome| NumberOfContracts| Age| Target| Available401K| CustomerValueSegment| ChurnScore| CallActivity| SentimentRating|Products      | WebActivity| Iteration|
+|:---------------------------|:-------------|:------|---------------------:|-----------------:|---:|------:|-------------:|--------------------:|----------:|------------:|---------------:|:-------------|-----------:|---------:|
+|R25_Row25_Row25_Row25#0     |M             |M      |                 10000|                 2|  64|      1|             1|                    1|        0.1|            2|               2|CO Investment |           1|         0|
+|R30_Row30_Row30_Row30#0     |M             |F      |                 10000|                 2|  63|      1|             1|                    1|        0.1|            2|               2|CO Investment |           1|         0|
+|R35_Row35_Row35_Row35#0     |M             |F      |                 10000|                 2|  62|      1|             1|                    1|        0.1|            2|               2|CO Investment |           1|         0|
+|R37_Row37_Row37_Row37#0     |S             |F      |                 40000|                 2|  32|      1|             0|                    2|        0.5|            2|               0|CO Investment |           0|         0|
+|R38_Row38_Row38_Row38#0     |M             |F      |                 10000|                 2|  62|      1|             1|                    1|        0.5|            2|               2|CO Investment |           1|         0|
+|R44_Row44_Row44_Row44#0     |M             |M      |                 20000|                 2|  61|      1|             1|                    1|        0.1|            2|               2|CO Investment |           1|         0|
+|R49_Row49_Row49_Row49#0     |S             |F      |                 40000|                 2|  30|      0|             1|                    2|        0.5|            2|               0|CO Investment |           0|         0|
+|R84_Row84_Row84_Row84#0     |S             |M      |                 80000|                 2|  53|      1|             0|                    2|        0.1|            3|               2|CO Investment |           0|         0|
+|R133_Row133_Row133_Row133#0 |S             |F      |                 30000|                 2|  30|      0|             0|                    2|        0.0|            2|               0|CO Investment |           0|         0|
+|R135_Row135_Row135_Row135#0 |S             |M      |                 30000|                 2|  30|      1|             0|                    2|        0.5|            2|               0|CO Investment |           0|         0|
+|R215_Row215_Row215_Row215#0 |M             |F      |                 40000|                 2|  60|      0|             1|                    2|        1.0|            3|               2|CO Investment |           1|         0|
+|R295_Row295_Row295_Row295#0 |S             |F      |                 80000|                 2|  56|      1|             1|                    2|        0.5|            3|               2|CO Investment |           0|         0|
+|R307_Row307_Row307_Row307#0 |M             |M      |                 80000|                 2|  55|      1|             1|                    2|        0.5|            3|               2|CO Investment |           0|         0|
+|R416_Row416_Row416_Row416#0 |M             |F      |                 60000|                 4|  65|      1|             1|                    3|        0.2|            3|               3|CO Investment |           1|         0|
+|R440_Row440_Row440_Row440#0 |M             |M      |                 80000|                 2|  63|      0|             0|                    3|        0.5|            3|               5|CO Investment |           0|         0|
+|R441_Row441_Row441_Row441#0 |M             |F      |                 90000|                 2|  63|      0|             0|                    3|        0.5|            3|               5|CO Investment |           0|         0|
+|R442_Row442_Row442_Row442#0 |M             |M      |                 90000|                 2|  62|      0|             1|                    3|        1.0|            3|               5|CO Investment |           0|         0|
+|R456_Row456_Row456_Row456#0 |M             |M      |                120000|                 4|  36|      1|             1|                    1|        1.0|            4|               5|CO Investment |           5|         0|
+|R466_Row466_Row466_Row466#0 |M             |M      |                150000|                 4|  39|      0|             1|                    1|        1.0|            5|               0|CO Investment |           5|         0|
+|R469_Row469_Row469_Row469#0 |S             |M      |                 10000|                 2|  37|      0|             0|                    3|        0.1|            1|               0|CO Investment |           0|         0|
+
+  
 ## 1. Simple Random Sampling
 
 ### Read data 
 
 ```r
-setwd("~/Documents/FJU大四/Sampling/Mid_HW")
-p_srs <- read.csv("products.csv",header = T) # population 
+p_srs <- product 
 ```
 
 ### Function
@@ -44,7 +80,7 @@ fun_srs <-function(n,data){
 ### Run Function
 
 ```r
-s_srs<-fun_srs(n=1068,data=p_srs) #sample s
+s_srs<-fun_srs(n=1068,data=product) #sample s
 ```
    
   
@@ -52,8 +88,7 @@ s_srs<-fun_srs(n=1068,data=p_srs) #sample s
 ### Read data
 
 ```r
-setwd("~/Documents/FJU大四/Sampling/Mid_HW")
-p_srs <- read.csv("products.csv",header = T)
+p_srs <- product
 ```
 
 ### Function
@@ -77,7 +112,7 @@ fun_srsn<-function(z=1.96,d,a,data){
 
 
 ```r
-  fun_srsn(z= 1.96, d= 0.015, a= p_srs$WebActivity, data= p_srs) 
+  fun_srsn(z= 1.96, d= 0.015, a= product$WebActivity, data= product) 
 ```
 
 ```
@@ -90,8 +125,7 @@ fun_srsn<-function(z=1.96,d,a,data){
 ### Read data
 
 ```r
-setwd("~/Documents/FJU大四/Sampling/Mid_HW")
-p_sys <- read.csv("products.csv",header = T) #population 
+p_sys <- product
 ```
 
 
@@ -120,7 +154,7 @@ After the s is sampled, match the row number to the data frame
 ### Run Function 
 
 ```r
-s_sys<- fun_sys(n=2000,data=p_sys) #sample  
+s_sys<- fun_sys(n=2000,data=product) #sample  
 ```
 
 
@@ -129,8 +163,7 @@ s_sys<- fun_sys(n=2000,data=p_sys) #sample
 ### Read data
 
 ```r
-setwd("~/Documents/FJU大四/Sampling/Mid_HW")
-p_sys <- read.csv("products.csv",header = T)
+p_sys <- product
 ```
 
 ### Function
@@ -147,7 +180,7 @@ sam = an empty matrix to fill all 10 rsys sample rows
 
 
 ```r
-fun_rsys<-function(n,n_rsys,v,data){
+fun_rsys<-function(n,n_rsys,v, data){
   
   # Repeated Systematic Sampling 
 
@@ -166,6 +199,7 @@ fun_rsys<-function(n,n_rsys,v,data){
 
   # Get Sample Data
     
+    sam = as.numeric(sam)
     s_rsys<- data.frame(data[sam,])
 
   # Use the sample data to estimate 95% CI
@@ -174,7 +208,7 @@ fun_rsys<-function(n,n_rsys,v,data){
     s<-(var(s_rsys[,v]))^(1/2)
     print(paste('95% CI=','(',m-1.96*s,',',m+1.96*s,')'))
     
-    s_rsys 
+    kable(s_rsys[1:10,],format = 'markdown')
 }
 ```
 The last s_rsys in the code is to get the sample data outside the function
@@ -182,7 +216,7 @@ The last s_rsys in the code is to get the sample data outside the function
 ### Run function 
 
 ```r
-s_rsys<- fun_rsys(n=3000,n_rsys=10,v='Age',data=p_sys)
+s_rsys<- fun_rsys(n=3000,n_rsys=10,v='Age', data=product)
 ```
 
 ```

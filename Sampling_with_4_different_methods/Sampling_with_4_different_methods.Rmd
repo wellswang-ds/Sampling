@@ -1,13 +1,26 @@
+---
+title: "Sampling with 4 different kinds of method"
+output:
+  html_document:
+    keep_md: TRUE
+---
 
 # Sampling with 4 different kinds of method 
+## 0. Data
+```{r}
+library(data.table)
+product <- fread('https://raw.githubusercontent.com/wellsytheman/Sampling/master/Sampling_with_4_different_methods/products.csv')
+library(knitr)
+kable(product[1:20,], format = 'markdown')
+```
+
   
 ## 1. Simple Random Sampling
 
 ### Read data 
 ```{r}
-setwd("~/Documents/FJU大四/Sampling/Mid_HW")
-p_srs <- read.csv("products.csv",header = T) # population 
 
+p_srs <- product 
 
 ```
 
@@ -33,7 +46,7 @@ fun_srs <-function(n,data){
 
 ### Run Function
 ```{r}
-s_srs<-fun_srs(n=1068,data=p_srs) #sample s
+s_srs<-fun_srs(n=1068,data=product) #sample s
 
 ```
    
@@ -41,8 +54,8 @@ s_srs<-fun_srs(n=1068,data=p_srs) #sample s
 ## 2. SRS with Ratio Estimation 
 ### Read data
 ```{r}
-setwd("~/Documents/FJU大四/Sampling/Mid_HW")
-p_srs <- read.csv("products.csv",header = T)
+
+p_srs <- product
 
 ```
 
@@ -65,7 +78,8 @@ fun_srsn<-function(z=1.96,d,a,data){
 ### Run Function
 
 ```{r}
-  fun_srsn(z= 1.96, d= 0.015, a= p_srs$WebActivity, data= p_srs) 
+
+  fun_srsn(z= 1.96, d= 0.015, a= product$WebActivity, data= product) 
 
 ```
   sample size n is determined   
@@ -74,8 +88,8 @@ fun_srsn<-function(z=1.96,d,a,data){
 ## 3. Systematic Sampling  
 ### Read data
 ```{r}
-setwd("~/Documents/FJU大四/Sampling/Mid_HW")
-p_sys <- read.csv("products.csv",header = T) #population 
+
+p_sys <- product
 
 
 ```
@@ -105,7 +119,7 @@ After the s is sampled, match the row number to the data frame
 
 ### Run Function 
 ```{r}
-s_sys<- fun_sys(n=2000,data=p_sys) #sample  
+s_sys<- fun_sys(n=2000,data=product) #sample  
 ```
 
 
@@ -113,8 +127,8 @@ s_sys<- fun_sys(n=2000,data=p_sys) #sample
 ## 4. Repeated Systematic Sampling and Confidence Interval 
 ### Read data
 ```{r}
-setwd("~/Documents/FJU大四/Sampling/Mid_HW")
-p_sys <- read.csv("products.csv",header = T)
+
+p_sys <- product
 
 ```
 
@@ -131,7 +145,7 @@ stp = the starting point of each 10 repeat systematic sampling
 sam = an empty matrix to fill all 10 rsys sample rows   
 
 ```{r}
-fun_rsys<-function(n,n_rsys,v,data){
+fun_rsys<-function(n,n_rsys,v, data){
   
   # Repeated Systematic Sampling 
 
@@ -150,6 +164,7 @@ fun_rsys<-function(n,n_rsys,v,data){
 
   # Get Sample Data
     
+    sam = as.numeric(sam)
     s_rsys<- data.frame(data[sam,])
 
   # Use the sample data to estimate 95% CI
@@ -158,7 +173,7 @@ fun_rsys<-function(n,n_rsys,v,data){
     s<-(var(s_rsys[,v]))^(1/2)
     print(paste('95% CI=','(',m-1.96*s,',',m+1.96*s,')'))
     
-    s_rsys 
+    kable(s_rsys[1:10,],format = 'markdown')
 }
 
 ```
@@ -166,7 +181,9 @@ The last s_rsys in the code is to get the sample data outside the function
 
 ### Run function 
 ```{r}
-s_rsys<- fun_rsys(n=3000,n_rsys=10,v='Age',data=p_sys)
+
+s_rsys<- fun_rsys(n=3000,n_rsys=10,v='Age', data=product)
+
 ```
 sample data get!
 
