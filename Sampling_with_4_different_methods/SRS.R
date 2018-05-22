@@ -1,8 +1,9 @@
 
 # Read data ---------------------------------------------------------------
 
-setwd("~/Desktop/抽樣調查")
-p_srs <- read.csv("products.csv",header = T) # population p
+library(data.table)
+product <- fread('https://raw.githubusercontent.com/wellsytheman/Sampling/master/Sampling_with_4_different_methods/products.csv')
+p_srs <- product
 
 # Function ----------------------------------------------------------------
 

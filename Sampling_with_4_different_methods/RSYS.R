@@ -1,7 +1,8 @@
 # Read data ---------------------------------------------------------------
 
-setwd("~/Documents/FJU大四/抽樣調查/Mid HW")
-p_sys <- read.csv("products.csv",header = T)
+library(data.table)
+product <- fread('https://raw.githubusercontent.com/wellsytheman/Sampling/master/Sampling_with_4_different_methods/products.csv')
+p_sys <- product
 
 # Function ----------------------------------------------------------------
 
@@ -27,6 +28,7 @@ fun_rsys<-function(n,n_rsys,v,data){
 
   # Get Sample Data ---------------------------------------------------------
     
+    sam <- as.numeric(sam)
     s_rsys<- data.frame(data[sam,])
 
   # Use the sample data to estimate 95% CI ----------------------------------
