@@ -126,10 +126,12 @@ $(document).ready(function () {
 <h1>Sampling with 4 different kinds of method</h1>
 <div id="data" class="section level2">
 <h2>0. Data</h2>
+<div id="showing-the-first-10-rows-of-the-data" class="section level3">
+<h3>Showing the first 10 rows of the data</h3>
 <pre class="r"><code>library(data.table)
 product &lt;- fread('https://raw.githubusercontent.com/wellsytheman/Sampling/master/Sampling_with_4_different_methods/products.csv')
 library(knitr)
-kable(product[1:20,], format = 'markdown')</code></pre>
+kable(product[1:10,], format = 'markdown')</code></pre>
 <table>
 <colgroup>
 <col width="12%"></col>
@@ -338,178 +340,9 @@ kable(product[1:20,], format = 'markdown')</code></pre>
 <td align="right">0</td>
 <td align="right">0</td>
 </tr>
-<tr class="odd">
-<td align="left">R215_Row215_Row215_Row215#0</td>
-<td align="left">M</td>
-<td align="left">F</td>
-<td align="right">40000</td>
-<td align="right">2</td>
-<td align="right">60</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">1.0</td>
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="left">CO Investment</td>
-<td align="right">1</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">R295_Row295_Row295_Row295#0</td>
-<td align="left">S</td>
-<td align="left">F</td>
-<td align="right">80000</td>
-<td align="right">2</td>
-<td align="right">56</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">0.5</td>
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="left">CO Investment</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">R307_Row307_Row307_Row307#0</td>
-<td align="left">M</td>
-<td align="left">M</td>
-<td align="right">80000</td>
-<td align="right">2</td>
-<td align="right">55</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">0.5</td>
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="left">CO Investment</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">R416_Row416_Row416_Row416#0</td>
-<td align="left">M</td>
-<td align="left">F</td>
-<td align="right">60000</td>
-<td align="right">4</td>
-<td align="right">65</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">3</td>
-<td align="right">0.2</td>
-<td align="right">3</td>
-<td align="right">3</td>
-<td align="left">CO Investment</td>
-<td align="right">1</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">R440_Row440_Row440_Row440#0</td>
-<td align="left">M</td>
-<td align="left">M</td>
-<td align="right">80000</td>
-<td align="right">2</td>
-<td align="right">63</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0.5</td>
-<td align="right">3</td>
-<td align="right">5</td>
-<td align="left">CO Investment</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">R441_Row441_Row441_Row441#0</td>
-<td align="left">M</td>
-<td align="left">F</td>
-<td align="right">90000</td>
-<td align="right">2</td>
-<td align="right">63</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0.5</td>
-<td align="right">3</td>
-<td align="right">5</td>
-<td align="left">CO Investment</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">R442_Row442_Row442_Row442#0</td>
-<td align="left">M</td>
-<td align="left">M</td>
-<td align="right">90000</td>
-<td align="right">2</td>
-<td align="right">62</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">3</td>
-<td align="right">1.0</td>
-<td align="right">3</td>
-<td align="right">5</td>
-<td align="left">CO Investment</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">R456_Row456_Row456_Row456#0</td>
-<td align="left">M</td>
-<td align="left">M</td>
-<td align="right">120000</td>
-<td align="right">4</td>
-<td align="right">36</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1.0</td>
-<td align="right">4</td>
-<td align="right">5</td>
-<td align="left">CO Investment</td>
-<td align="right">5</td>
-<td align="right">0</td>
-</tr>
-<tr class="odd">
-<td align="left">R466_Row466_Row466_Row466#0</td>
-<td align="left">M</td>
-<td align="left">M</td>
-<td align="right">150000</td>
-<td align="right">4</td>
-<td align="right">39</td>
-<td align="right">0</td>
-<td align="right">1</td>
-<td align="right">1</td>
-<td align="right">1.0</td>
-<td align="right">5</td>
-<td align="right">0</td>
-<td align="left">CO Investment</td>
-<td align="right">5</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="left">R469_Row469_Row469_Row469#0</td>
-<td align="left">S</td>
-<td align="left">M</td>
-<td align="right">10000</td>
-<td align="right">2</td>
-<td align="right">37</td>
-<td align="right">0</td>
-<td align="right">0</td>
-<td align="right">3</td>
-<td align="right">0.1</td>
-<td align="right">1</td>
-<td align="right">0</td>
-<td align="left">CO Investment</td>
-<td align="right">0</td>
-<td align="right">0</td>
-</tr>
 </tbody>
 </table>
+</div>
 </div>
 <div id="simple-random-sampling" class="section level2">
 <h2>1. Simple Random Sampling</h2>
@@ -651,6 +484,9 @@ sam = an empty matrix to fill all 10 rsys sample rows</p>
 <h3>Run function</h3>
 <pre class="r"><code>s_rsys&lt;- fun_rsys(n=3000,n_rsys=10,v='Age', data=product)</code></pre>
 <pre><code>## [1] &quot;95% CI= ( 26.2959617897657 , 70.1440382102343 )&quot;</code></pre>
+</div>
+<div id="sample-data-get-showing-the-first-10-rows" class="section level3">
+<h3>sample data get! (Showing the first 10 rows)</h3>
 <pre class="r"><code>kable(s_rsys[1:10,], format = 'markdown')</code></pre>
 <table style="width:100%;">
 <colgroup>
@@ -862,7 +698,6 @@ sam = an empty matrix to fill all 10 rsys sample rows</p>
 </tr>
 </tbody>
 </table>
-<p>sample data get!</p>
 </div>
 </div>
 </div>

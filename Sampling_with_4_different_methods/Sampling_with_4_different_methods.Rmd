@@ -7,11 +7,12 @@ output:
 
 # Sampling with 4 different kinds of method 
 ## 0. Data
+### Showing the first 10 rows of the data
 ```{r}
 library(data.table)
 product <- fread('https://raw.githubusercontent.com/wellsytheman/Sampling/master/Sampling_with_4_different_methods/products.csv')
 library(knitr)
-kable(product[1:20,], format = 'markdown')
+kable(product[1:10,], format = 'markdown')
 ```
 
   
@@ -183,9 +184,13 @@ The last s_rsys in the code is to get the sample data outside the function
 ```{r}
 
 s_rsys<- fun_rsys(n=3000,n_rsys=10,v='Age', data=product)
-kable(s_rsys[1:10,], format = 'markdown')
 ```
-sample data get!
+
+### sample data get! (Showing the first 10 rows)
+```{r}
+kable(s_rsys[1:10,], format = 'markdown')
+
+```
 
 
 

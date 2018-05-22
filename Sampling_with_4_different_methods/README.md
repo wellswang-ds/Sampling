@@ -1,7 +1,5 @@
 
-
 # Sampling with 4 different kinds of method 
-
 Here we demonstrate 4 different kinds of sampling method with the given data `product.csv`
 
 <details><summary>Table of Contents</summary><p>
@@ -15,12 +13,13 @@ Here we demonstrate 4 different kinds of sampling method with the given data `pr
 </p></details><p></p>
 
 ## 0. Data
+### Showing the first 10 rows of the data
 
 ```r
 library(data.table)
 product <- fread('https://raw.githubusercontent.com/wellsytheman/Sampling/master/Sampling_with_4_different_methods/products.csv')
 library(knitr)
-kable(product[1:20,], format = 'markdown')
+kable(product[1:10,], format = 'markdown')
 ```
 
 
@@ -37,16 +36,6 @@ kable(product[1:20,], format = 'markdown')
 |R84_Row84_Row84_Row84#0     |S             |M      |                 80000|                 2|  53|      1|             0|                    2|        0.1|            3|               2|CO Investment |           0|         0|
 |R133_Row133_Row133_Row133#0 |S             |F      |                 30000|                 2|  30|      0|             0|                    2|        0.0|            2|               0|CO Investment |           0|         0|
 |R135_Row135_Row135_Row135#0 |S             |M      |                 30000|                 2|  30|      1|             0|                    2|        0.5|            2|               0|CO Investment |           0|         0|
-|R215_Row215_Row215_Row215#0 |M             |F      |                 40000|                 2|  60|      0|             1|                    2|        1.0|            3|               2|CO Investment |           1|         0|
-|R295_Row295_Row295_Row295#0 |S             |F      |                 80000|                 2|  56|      1|             1|                    2|        0.5|            3|               2|CO Investment |           0|         0|
-|R307_Row307_Row307_Row307#0 |M             |M      |                 80000|                 2|  55|      1|             1|                    2|        0.5|            3|               2|CO Investment |           0|         0|
-|R416_Row416_Row416_Row416#0 |M             |F      |                 60000|                 4|  65|      1|             1|                    3|        0.2|            3|               3|CO Investment |           1|         0|
-|R440_Row440_Row440_Row440#0 |M             |M      |                 80000|                 2|  63|      0|             0|                    3|        0.5|            3|               5|CO Investment |           0|         0|
-|R441_Row441_Row441_Row441#0 |M             |F      |                 90000|                 2|  63|      0|             0|                    3|        0.5|            3|               5|CO Investment |           0|         0|
-|R442_Row442_Row442_Row442#0 |M             |M      |                 90000|                 2|  62|      0|             1|                    3|        1.0|            3|               5|CO Investment |           0|         0|
-|R456_Row456_Row456_Row456#0 |M             |M      |                120000|                 4|  36|      1|             1|                    1|        1.0|            4|               5|CO Investment |           5|         0|
-|R466_Row466_Row466_Row466#0 |M             |M      |                150000|                 4|  39|      0|             1|                    1|        1.0|            5|               0|CO Investment |           5|         0|
-|R469_Row469_Row469_Row469#0 |S             |M      |                 10000|                 2|  37|      0|             0|                    3|        0.1|            1|               0|CO Investment |           0|         0|
 
   
 ## 1. Simple Random Sampling
@@ -223,6 +212,8 @@ s_rsys<- fun_rsys(n=3000,n_rsys=10,v='Age', data=product)
 ## [1] "95% CI= ( 26.2959617897657 , 70.1440382102343 )"
 ```
 
+### sample data get! (Showing the first 10 rows)
+
 ```r
 kable(s_rsys[1:10,], format = 'markdown')
 ```
@@ -241,7 +232,6 @@ kable(s_rsys[1:10,], format = 'markdown')
 |R6809_Row6809_Row6809_Row6809#0 |S             |M      |                 10000|                 2|  47|      0|             1|                    3|        0.0|            1|               3|CO Investment |           2|         0|
 |R7629_Row7629_Row7629_Row7629#0 |S             |M      |                 20000|                 2|  39|      0|             0|                    3|        0.1|            1|               0|CO Investment |           0|         0|
 |R8334_Row8334_Row8334_Row8334#0 |S             |F      |                 10000|                 2|  46|      0|             1|                    3|        0.0|            3|               3|CO Investment |           2|         0|
-sample data get!
 
 
 
