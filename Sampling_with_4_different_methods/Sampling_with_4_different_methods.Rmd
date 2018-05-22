@@ -2,7 +2,7 @@
 title: "Sampling with 4 different kinds of method"
 output:
   html_document:
-    #keep_md: TRUE
+    keep_md: TRUE
 ---
 
 # Sampling with 4 different kinds of method 

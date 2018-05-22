@@ -1,6 +1,6 @@
 
 
-# Sampling with 4 different kinds of method
+# Sampling with 4 different kinds of method 
 
 Here we demonstrate 4 different kinds of sampling method with the given data `product.csv`
 
@@ -13,7 +13,6 @@ Here we demonstrate 4 different kinds of sampling method with the given data `pr
 * [4. Repeated Systematic Sampling and Confidence Interval](#4-repeated-systematic-sampling-and-confidence-interval)
 
 </p></details><p></p>
-
 
 ## 0. Data
 
@@ -209,7 +208,7 @@ fun_rsys<-function(n,n_rsys,v, data){
     s<-(var(s_rsys[,v]))^(1/2)
     print(paste('95% CI=','(',m-1.96*s,',',m+1.96*s,')'))
     
-    return(kable(s_rsys[1:10,],format = 'markdown'))
+    s_rsys
 }
 ```
 The last s_rsys in the code is to get the sample data outside the function
@@ -223,6 +222,25 @@ s_rsys<- fun_rsys(n=3000,n_rsys=10,v='Age', data=product)
 ```
 ## [1] "95% CI= ( 26.2959617897657 , 70.1440382102343 )"
 ```
+
+```r
+kable(s_rsys[1:10,], format = 'markdown')
+```
+
+
+
+|row.ID                          |MaritalStatus |Gender | EstimatedYearlyIncome| NumberOfContracts| Age| Target| Available401K| CustomerValueSegment| ChurnScore| CallActivity| SentimentRating|Products      | WebActivity| Iteration|
+|:-------------------------------|:-------------|:------|---------------------:|-----------------:|---:|------:|-------------:|--------------------:|----------:|------------:|---------------:|:-------------|-----------:|---------:|
+|R307_Row307_Row307_Row307#0     |M             |M      |                 80000|                 2|  55|      1|             1|                    2|        0.5|            3|               2|CO Investment |           0|         0|
+|R1521_Row1521_Row1521_Row1521#0 |S             |F      |                 10000|                 2|  35|      1|             0|                    3|        0.0|            1|               0|CO Investment |           0|         0|
+|R2592_Row2592_Row2592_Row2592#0 |M             |F      |                 70000|                 2|  58|      1|             1|                    3|        0.2|            3|               5|CO Investment |           2|         0|
+|R3231_Row3231_Row3231_Row3231#0 |M             |F      |                120000|                 4|  38|      0|             1|                    1|        1.0|            4|               0|CO Investment |           5|         0|
+|R3999_Row3999_Row3999_Row3999#0 |S             |F      |                 10000|                 2|  37|      0|             1|                    3|        0.1|            1|               0|CO Investment |           0|         0|
+|R5259_Row5259_Row5259_Row5259#0 |S             |F      |                 10000|                 2|  44|      1|             1|                    3|        0.0|            1|               4|CO Investment |           4|         0|
+|R6105_Row6105_Row6105_Row6105#0 |S             |F      |                 10000|                 2|  38|      0|             1|                    3|        0.1|            2|               0|CO Investment |           0|         0|
+|R6809_Row6809_Row6809_Row6809#0 |S             |M      |                 10000|                 2|  47|      0|             1|                    3|        0.0|            1|               3|CO Investment |           2|         0|
+|R7629_Row7629_Row7629_Row7629#0 |S             |M      |                 20000|                 2|  39|      0|             0|                    3|        0.1|            1|               0|CO Investment |           0|         0|
+|R8334_Row8334_Row8334_Row8334#0 |S             |F      |                 10000|                 2|  46|      0|             1|                    3|        0.0|            3|               3|CO Investment |           2|         0|
 sample data get!
 
 
