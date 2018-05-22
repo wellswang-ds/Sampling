@@ -14,6 +14,7 @@ Here we demonstrate 4 different kinds of sampling method with the given data `pr
 
 </p></details><p></p>
 
+
 ## 0. Data
 
 ```r
@@ -208,7 +209,7 @@ fun_rsys<-function(n,n_rsys,v, data){
     s<-(var(s_rsys[,v]))^(1/2)
     print(paste('95% CI=','(',m-1.96*s,',',m+1.96*s,')'))
     
-    kable(s_rsys[1:10,],format = 'markdown')
+    return(kable(s_rsys[1:10,],format = 'markdown'))
 }
 ```
 The last s_rsys in the code is to get the sample data outside the function
