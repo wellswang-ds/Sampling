@@ -1,3 +1,10 @@
+---
+title: "Cluster Sampling"
+output:
+  html_document:
+    keep_md: TRUE
+---
+
 
 # Cluster Sampling
 ## 8.3 Estimation of a population mean and total
@@ -10,7 +17,8 @@ total_income_per_cluster_yi<-c(96000,121000,42000,65000,52000,40000,75000,65000,
                                50000,85000,43000,54000,49000,53000,50000,32000,22000,
                                45000,37000,51000,30000,39000,47000,41000)
 percapita_income<-data.frame(cluster,number_of_residents_mi,total_income_per_cluster_yi)
-print(percapita_income)
+library(knitr)
+kable(percapita_income,format = 'markdown')
 ```
 ### 輸入例題中各變數的值
 ```{R}
@@ -143,7 +151,7 @@ total_income_per_cluster_yi<-c(96000,121000,42000,65000,52000,40000,75000,65000,
                                50000,85000,43000,54000,49000,53000,50000,32000,22000,
                                45000,37000,51000,30000,39000,47000,41000)
 percapita_income1<-data.frame(cluster,number_of_residents_mi,total_income_per_cluster_yi)
-print(percapita_income1)
+kable(percapita_income1,format = 'markdown')
 
 y1<-percapita_income1$total_income_per_cluster_yi   #資料一y值
 m1<-percapita_income1$number_of_residents_mi        #資料一m值
@@ -154,7 +162,7 @@ cluster<-c(1,2,3,4,5,6,7,8,9,10)
 number_of_residents_mi<-c(2,5,7,4,3,8,6,10,3,1)
 total_income_per_cluster_yi<-c(18000,52000,68000,36000,45000,96000,64000,115000,41000,12000)
 percapita_income2<-data.frame(cluster,number_of_residents_mi,total_income_per_cluster_yi)
-print(percapita_income2)
+kable(percapita_income2,format = 'markdown')
 
 y2<-percapita_income2$total_income_per_cluster_yi   #資料二y值
 m2<-percapita_income2$number_of_residents_mi        #資料二m值
@@ -207,7 +215,7 @@ number_of_employees<-c(1200,450,2100,860,2840,1910,390,3200)
 ```{r}
 Cumulative_range<-cumsum(number_of_employees)
 Days_of_sick_leave<-data.frame(Division, number_of_employees,Cumulative_range)
-print(Days_of_sick_leave)
+kable(Days_of_sick_leave,format = 'markdown')
 
 pps <-Days_of_sick_leave$number_of_employees   
 
